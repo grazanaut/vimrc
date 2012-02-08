@@ -26,6 +26,9 @@ set wildignore+=*.o,.git,.svn,node_modules
 
 set iskeyword+=$,_         " added word chars
 
+" paul added
+set list " show whitespace chars
+
 " show line number, cursor position
 set number
 set ruler
