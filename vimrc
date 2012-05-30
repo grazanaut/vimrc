@@ -14,7 +14,7 @@ let mapleader = ","
 
 set scrolloff=3            " scroll 3 lines before bottom/top
 set autoread               " set to auto read when a file is changed from the outside
-set mouse=a                " allow for full mouse support
+"set mouse=a                " allow for full mouse support
 set autowrite
 set showcmd                " display incomplete commands
 set hidden                 " allow buffer to be put in the background without saving
@@ -22,7 +22,7 @@ set hidden                 " allow buffer to be put in the background without sa
 set spelllang=en,es                 " set spell check language
 set wildmenu               " show autocomplete menus
 set wildmode=list:longest,list:full " completion menu behaves more like cli
-set wildignore+=*.o,.git,.svn,node_modules
+set wildignore+=*.o,tags,Session.vim
 
 set iskeyword+=$,_         " added word chars
 
@@ -106,8 +106,8 @@ set title
 
 " set status line
 set laststatus=2
-set statusline=%<%f\%h%m%r%=%-20.(line=%l\ \ col=%c%V\ \ totlin=%L%)\ \%P\ %{fugitive#statusline()} " set statusline=%<%f\%h%m%r%=%-20.(line=%l\ \ col=%c%V\ \ totlin=%L%)\ \ \%h%m%r%=%-40(bytval=0x%B,%n%Y%)\%P
-"
+set statusline=%<%f\%h%m%r%=%-20.(line=%l\ \ col=%c%V\ \ totlin=%L%)\ \%P\ %{fugitive#statusline()}
+
 "display a warning if fileformat isnt unix
 set statusline+=%#warningmsg#
 set statusline+=%{&ff!='unix'?'['.&ff.']':''}
@@ -121,6 +121,9 @@ set statusline+=%*
 " gvim don't display the menu or toolbar
 set guioptions-=m
 set guioptions-=T
+" gvim don't show scrollbars
+set guioptions-=r
+set guioptions-=L
 
 
 """""" colour scheme
@@ -130,25 +133,20 @@ colorscheme solarized
 
 " folding
 set foldenable                   " enable folding
-set foldmethod=marker            " detect triple-{ style fold markers
+set foldmethod=manual            " detect triple-{ style fold markers
 set foldlevel=99
-
-" set ack as the grep programme
-" set grepprg=ack\ -ai
 
 
 """""""""""""""""
 " added filetypes
-au BufNewFile,BufRead *.spv set filetype=php
 au BufNewFile,BufRead *.jqt set filetype=html
-au BufNewFile,BufRead *.liquid set filetype=xhtml
+au BufNewFile,BufRead *.scss set filetype=css
+au BufNewFile,BufRead *.liquid set filetype=html
 au BufNewFile,BufRead *.json set filetype=json
 
 
 " settings for folding comments
 au BufNewFile,BufRead *.cpp,*.c,*.h,*.java,*.js syn region myCComment start="/\*\*" end="\*/" fold keepend transparent
-" HTML
-au FileType html,php,xhtml,jsp,ejs let b:delimitMate_matchpairs = "(:),[:],{:}"
 
 
 """"""""""""""""""""
@@ -161,15 +159,6 @@ nmap <silent> <leader>sv :so $MYVIMRC<cr>
 nnoremap Y y$
 " yank entire file (global yank)
 nmap gy ggVGy
-
-" alt+n or alt+p to navigate between entries in QuickFix
-map <silent> <m-p> :cp <cr>
-map <silent> <m-n> :cn <cr>
-
-" auto complete {} indent and position the cursor in the middle line
-"inoremap {<cr>  {<cr>}<esc>O
-"inoremap (<CR>  (<CR>)<Esc>O
-"inoremap [<CR>  [<CR>]<Esc>O
 
 " fast window switching
 map <leader>w <C-W>w
@@ -194,9 +183,6 @@ autocmd FileType c,cpp,python,ruby,java,html,css,json,javascript autocmd BufWrit
 
 " insert path of current file into a command
 cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
-
-" Gundo plugin
-map <F5> :GundoToggle<cr>
 
 " save with ,,
 inoremap <leader>, <esc>:w<cr>
@@ -238,16 +224,15 @@ nnoremap j gj
 nnoremap k gk
 
 " folds
-:noremap <leader>z f{zf%
+:noremap <leader>zz zf%
+:noremap <leader>zf f{zf%
 :noremap zx za
 
-" remapping folds
-nnoremap zo zO
-nnoremap zO zo
 
 " error next,previous (ctrl-{n,p})
-:noremap <c-n> :cn<CR>
-:noremap <c-p> :cp<CR>
+:noremap <c-n> :cn<cr>
+:noremap <c-p> :cp<cr>
+
 " Buffer delete (ctrl-c)
 :noremap <c-q> :bd<CR>
 
@@ -261,40 +246,48 @@ map <c-c>k <c-w>k<c-w>c<c-w>j
 map <c-c>l <c-w>l<c-w>c<c-w>h
 map <c-c>h <c-w>h<c-w>c<c-w>l
 
-" nerd tree
-map <leader>d :NERDTreeToggle<CR>
-map <leader>nf :NERDTreeFind<CR>
-map <leader>nm :NERDTreeMirror<CR>
-"let g:NERDTreeQuitOnOpen=1
-let g:NERDChristmasTree=1
-"let g:NERDTreeShowHidden=1
 
 " show invisible chars
 nmap <silent> <leader>i :set nolist!<CR>
 
 " taglist
-map <leader>l :TlistToggle<CR>
-map <F8> :!~/.vim/utils/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+nmap <F8> :TagbarToggle<CR>
 
 " Task
-inoremap <silent> <buffer> <C-D-CR> <ESC>:call Toggle_task_status()<CR>i
-noremap <silent> <buffer> <C-D-CR> :call Toggle_task_status()<CR>
+inoremap <silent> <buffer> <c-d-cr> <esc>:call Toggle_task_status()<cr>i
+noremap <silent> <buffer> <c-d-cr> :call Toggle_task_status()<cr>
 
 
 """"""""""""""""
 " Plugin settings
-" automatically close tag as needed
-"au Filetype html,xml,xsl,php,spv,phtml source $HOME/.vim/scripts/closetag.vim
+" nerd tree
+map <leader>d :NERDTreeToggle<CR>
+map <leader>nf :NERDTreeFind<CR>
+map <leader>nm :NERDTreeMirror<CR>
+let g:NERDChristmasTree=1
+"let g:NERDTreeShowHidden=1
 
-" Command-T
-let g:CommandTMaxHeight=20
+" Gundo plugin
+map <F6> :GundoToggle<cr>
+
+" fugitive
+map <leader>gs :Gstatus<cr>
+map <leader>gl :Glog<cr>
+map <leader>gd :Gdiff<cr>
 
 " Ack
-set grepprg=ack
+" set grepprg=ack\ -ai " set ack as the grep programme
+let g:ackprg="ack -H --type-set jade=.jade --type-set stylus=.styl --type-set coffee=.coffee --nocolor --nogroup --column --ignore-dir=node_modules -G '^((?!min\.).)*$'"
+
 nnoremap <leader>a :Ack<space>
+map <leader>c :Ack <c-R>"<space><cr>
 let g:ackhighlight=1
-" let g:ackprg="ack -H --type-set jade=.jade --type-set stylus=.styl --type-set coffee=.coffee --nocolor --nogroup --column --ignore-dir=node_modules -G '^((?!min\.).)*$'"
-let g:ackprg="ack -H --column --nocolor --nogroup"
+
+" Easy Grep options
+let g:EasyGrepInvertWholeWord=1 " ,vv searches for whole word
+"let g:EasyGrepMode = 2
+"let g:EasyGrepRecursive = 1
+
 
 " Change which file opens after executing :Rails command
 let g:rails_default_file='config/database.yml'
@@ -304,10 +297,6 @@ let Tlist_Ctags_Cmd = '~/.vim/utils/ctags' " set path to ctags utility
 let Tlist_WinWidth = 50
 let g:tlist_javascript_settings = 'javascript;s:string;a:array;o:object;f:function'
 
-" Easy Grep options
-let g:EasyGrepMode = 2
-let g:EasyGrepRecursive = 1
-
 " Markdown
 augroup mkd " add markdown syntax
 	autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
@@ -315,7 +304,7 @@ augroup END
 
 " mustache
 autocmd VimEnter,BufNewFile,BufRead *.mustache set nofoldenable
-autocmd VimEnter,BufNewFile,BufRead *.js set foldmethod=manual
+"autocmd VimEnter,BufNewFile,BufRead *.js set foldmethod=manual
 
 " gundo
 if !has("python")
@@ -325,31 +314,39 @@ endif
 "JavaScript Syntax
 let g:javascript_ignore_javaScriptdoc = 1
 
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+  \ 'file': '\.exe$\|\.so$\|\.dll$',
+  \ 'link': '',
+  \ }
 
+
+"Syntastic settings
+let g:syntastic_javascript_checker="jshint"
+let g:syntastic_auto_loc_list=2 " close location list automatically
+"let g:syntastic_mode_map = { 'mode': 'active',
+                           "\ 'active_filetypes': ['ruby', 'php'],
+                           "\ 'passive_filetypes': ['html', 'jqt'] }
+
+" call the jshint config loader script for syntastic
+:autocmd FileType javascript source $HOME/.vim/jshint-config-loader.vim
+
+" surround plugin
+autocmd FileType php let b:surround_45 = "<?php \r ?>"
+
+" Python settings
+:autocmd FileType python set expandtab
+:autocmd FileType python set shiftwidth=4
+:autocmd FileType python set tabstop=4
+:autocmd FileType python set softtabstop=4
 
 """""""""""
 " vim tools
 " create a uuid
 imap <c-j>d <c-r>=system('$HOME/.vim/utils/uuid.sh')<cr>
 
-" show hightlighting groups for current word
-nmap <leader>sh :call <sid>SynStack()<cr>
-function <sid>SynStack()
-	if !exists("*synstack")
-		return
-	endif
-	echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
+"refresh browser"
+nnoremap <F5> :silent execute "!python $HOME/.vim/utils/browserrefresh.py"<cr>
 
-" run file with PHP CLI (CTRL-M)
-:autocmd FileType php noremap <c-m> :w!<CR>:!/usr/bin/php %<CR>
-
-" PHP parser check
-:autocmd FileType php noremap <c-a> :!/usr/bin/php -l %<CR>
-
-" Python settings
-:autocmd FileType python set expandtab
-
-" highlight lines that are longer than 80 chars
-" highlight OverLength guifg=#ffffff guibg=#740100 gui=NONE
-" match OverLength /\%81v.\+/
+" insert the current working directory
+iabbrev <silent> CWD <c-r>=getcwd()<cr>
