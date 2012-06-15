@@ -82,3 +82,6 @@
 [submodule "bundle/vim-localvimrc"]
 	path = bundle/vim-localvimrc
 	url = https://github.com/embear/vim-localvimrc.git
+[submodule "perforce.vim"]
+	path = perforce.vim
+	url = git://github.com/vim-scripts/perforce.vim.git
