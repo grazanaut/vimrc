@@ -84,4 +84,4 @@
 	url = https://github.com/embear/vim-localvimrc.git
 [submodule "bundle/perforce"]
 	path = bundle/perforce
-	url = git://github.com/vim-scripts/perforce.vim.git
+	url = git@github.com:grazanaut/perforce.vim.git
