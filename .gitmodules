@@ -85,3 +85,6 @@
 [submodule "bundle/perforce"]
 	path = bundle/perforce
 	url = git@github.com:grazanaut/perforce.vim.git
+[submodule "bundle/handlebars"]
+	path = bundle/handlebars
+	url = git://github.com/nono/vim-handlebars.git
