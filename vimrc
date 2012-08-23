@@ -7,6 +7,7 @@ silent! call pathogen#runtime_append_all_bundles()
 silent! call pathogen#helptags()
 filetype plugin indent on
 
+
 """""""""""""""""
 "general settings
 syntax on
@@ -79,8 +80,8 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-set pastetoggle=<F5>
-set listchars=tab:>-,trail:-,extends:#,nbsp:%
+set pastetoggle=<F7>
+set listchars=tab:‣\ ,trail:-,extends:#,nbsp:%,eol:¬
 set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
 
 " vim 7.3 features
@@ -130,6 +131,9 @@ set guioptions-=L
 " set t_Co=256
 set background=dark
 colorscheme solarized
+if has('gui_running')
+  set guifont=Meslo\ LG\ S\ DZ:h14
+endif
 
 " folding
 set foldenable                   " enable folding
@@ -144,7 +148,6 @@ au BufNewFile,BufRead *.scss set filetype=css
 au BufNewFile,BufRead *.liquid set filetype=html
 au BufNewFile,BufRead *.json set filetype=json
 
-
 " settings for folding comments
 au BufNewFile,BufRead *.cpp,*.c,*.h,*.java,*.js syn region myCComment start="/\*\*" end="\*/" fold keepend transparent
 
@@ -154,6 +157,7 @@ au BufNewFile,BufRead *.cpp,*.c,*.h,*.java,*.js syn region myCComment start="/\*
 " edit and save .vimrc quickly
 nmap <silent> <leader>ev :e $MYVIMRC<cr>
 nmap <silent> <leader>sv :so $MYVIMRC<cr>
+
 
 " map Y to match C and D behavior
 nnoremap Y y$
@@ -170,6 +174,7 @@ nmap <leader>r :%s#\<<C-r>=expand("<cword>")<CR>\>#
 
 " format json
 autocmd FileType json nmap <leader>f :%!python -m json.tool<cr>
+
 
 " strip all trailing whitespace 
 fun! <SID>StripTrailingWhitespaces()
@@ -277,7 +282,8 @@ map <leader>gd :Gdiff<cr>
 
 " Ack
 " set grepprg=ack\ -ai " set ack as the grep programme
-let g:ackprg="ack -H --type-set jade=.jade --type-set stylus=.styl --type-set coffee=.coffee --nocolor --nogroup --column --ignore-dir=node_modules -G '^((?!min\.).)*$'"
+"let g:ackprg="ack -H --type-set jade=.jade --type-set stylus=.styl --type-set coffee=.coffee --type-set html=.jqt --nocolor --nogroup --column --ignore-dir=node_modules -G '^((?!min\.).)*$'"
+let g:ackprg="ack -H --type-set jade=.jade --type-set stylus=.styl --type-set coffee=.coffee --type-set html=.jqt --nocolor --nogroup --column --ignore-dir=node_modules -G '^((?!build\.).)*'"
 
 nnoremap <leader>a :Ack<space>
 map <leader>c :Ack <c-R>"<space><cr>
@@ -298,6 +304,10 @@ let Tlist_WinWidth = 50
 let g:tlist_javascript_settings = 'javascript;s:string;a:array;o:object;f:function'
 
 " Markdown
+augroup md " add markdown syntax
+	autocmd BufRead *.md  set ai formatoptions=tcroqn2 comments=n:> ft=markdown
+augroup END
+
 augroup mkd " add markdown syntax
 	autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
 augroup END
@@ -346,7 +356,46 @@ autocmd FileType php let b:surround_45 = "<?php \r ?>"
 imap <c-j>d <c-r>=system('$HOME/.vim/utils/uuid.sh')<cr>
 
 "refresh browser"
-nnoremap <F5> :silent execute "!python $HOME/.vim/utils/browserrefresh.py"<cr>
+nnoremap <F5> :silent execute "!python $HOME/.vim/utils/browserrefresh.py &"<cr>
+
+" run npm tests
+nnoremap <leader>t :!npm test<cr>
 
 " insert the current working directory
-iabbrev <silent> CWD <c-r>=getcwd()<cr>
+iabbrev <silent> CWD <c-r>=getcwd()
+
+"save on focus lost
+:au FocusLost * :wa
+
+"pretty xml
+function! DoPrettyXML()
+  " save the filetype so we can restore it later
+  let l:origft = &ft
+  set ft=
+  " delete the xml header if it exists. This will
+  " permit us to surround the document with fake tags
+  " without creating invalid xml.
+  1s/<?xml .*?>//e
+  " insert fake tags around the entire document.
+  " This will permit us to pretty-format excerpts of
+  " XML that may contain multiple top-level elements.
+  0put ='<PrettyXML>'
+  $put ='</PrettyXML>'
+  silent %!xmllint --format -
+  " xmllint will insert an <?xml?> header. it's
+  easy enough to delete
+  " if you don't want it.
+  " delete the fake tags
+  2d
+  $d
+  " restore the 'normal' indentation,
+  which is one extra level
+  " too deep due to the extra tags we
+  wrapped around the document.
+  silent %<
+  " back to home
+  1
+  " restore the filetype
+  exe "set ft=" . l:origft
+endfunction
+command! PrettyXML call DoPrettyXML()
