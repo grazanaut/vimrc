@@ -1,0 +1,810 @@
+"""""""""""""""""""""""""""""""""""""""""""""
+" GRAZA TODOS for VRAPPERRC BUILD FROM VIMRC
+"""""""""""""""""""""""""""""""""""""""""""""
+" mapleader doesnt work. replace all <leader> instances with "," (can perhaps read from mapleader let syntax)
+
+"  full vim
+set nocompatible " must be the first line
+
+"'GrazaCommentedOutForVrapper'" " pathogen
+"'GrazaCommentedOutForVrapper'" filetype off
+"'GrazaCommentedOutForVrapper'" silent! call pathogen#runtime_append_all_bundles()
+"'GrazaCommentedOutForVrapper'" silent! call pathogen#helptags()
+"'GrazaCommentedOutForVrapper'" filetype plugin indent on
+
+
+"""""""""""""""""
+"general settings
+syntax on
+let mapleader = ","
+
+"'GrazaCommentedOutForVrapper'" set scrolloff=3            " scroll 3 lines before bottom/top
+"'GrazaCommentedOutForVrapper'" set autoread               " set to auto read when a file is changed from the outside
+"'GrazaCommentedOutForVrapper'" "set mouse=a                " allow for full mouse support
+"'GrazaCommentedOutForVrapper'" set autowrite
+"'GrazaCommentedOutForVrapper'" set showcmd                " display incomplete commands
+"'GrazaCommentedOutForVrapper'" set hidden                 " allow buffer to be put in the background without saving
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" set spelllang=en,es                 " set spell check language
+"'GrazaCommentedOutForVrapper'" set wildmenu               " show autocomplete menus
+"'GrazaCommentedOutForVrapper'" set wildmode=list:longest,list:full " completion menu behaves more like cli
+"'GrazaCommentedOutForVrapper'" set wildignore+=*.o,tags,Session.vim
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" set iskeyword+=$,_         " added word chars
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " paul added
+"'GrazaCommentedOutForVrapper'" set list " show whitespace chars
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " show line number, cursor position
+"'GrazaCommentedOutForVrapper'" set number
+"'GrazaCommentedOutForVrapper'" set ruler
+"'GrazaCommentedOutForVrapper'" set cursorline             " highlights the cursor line
+"'GrazaCommentedOutForVrapper'" set nowrap
+"'GrazaCommentedOutForVrapper'" set linebreak              " this will not break whole words while wrap is enabled
+"'GrazaCommentedOutForVrapper'" set showbreak=…
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " search settings
+"'GrazaCommentedOutForVrapper'" set hlsearch               " highlight search things
+"'GrazaCommentedOutForVrapper'" set incsearch              " go to search results as typing
+"'GrazaCommentedOutForVrapper'" set smartcase              " but case-sensitive if expression contains a capital letter.
+"'GrazaCommentedOutForVrapper'" set ignorecase             " ignore case when searching
+"'GrazaCommentedOutForVrapper'" set gdefault               " assume global when searching or substituting
+"'GrazaCommentedOutForVrapper'" set magic                  " set magic on, for regular expressions
+"'GrazaCommentedOutForVrapper'" set showmatch              " show matching brackets when text indicator is over them
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" set lazyredraw             " don't redraw screen during macros
+"'GrazaCommentedOutForVrapper'" set ttyfast                " improves redrawing for newer computers
+"'GrazaCommentedOutForVrapper'" set fileformats=unix,mac,dos
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " indent settings
+"'GrazaCommentedOutForVrapper'" set autoindent
+"'GrazaCommentedOutForVrapper'" set smartindent
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " tab settings
+"'GrazaCommentedOutForVrapper'" set shiftwidth=2
+"'GrazaCommentedOutForVrapper'" set tabstop=2
+"'GrazaCommentedOutForVrapper'" set softtabstop=2
+"'GrazaCommentedOutForVrapper'" set expandtab
+"'GrazaCommentedOutForVrapper'" set smarttab
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " show line number, cursor position
+"'GrazaCommentedOutForVrapper'" set number
+"'GrazaCommentedOutForVrapper'" set ruler
+"'GrazaCommentedOutForVrapper'" set cul                    " highlights the cursor line
+"'GrazaCommentedOutForVrapper'" set backspace=start,indent,eol " set backspace to act like normal
+"'GrazaCommentedOutForVrapper'" set nowrap
+"'GrazaCommentedOutForVrapper'" set encoding=utf-8
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" set visualbell             " don't beep
+"'GrazaCommentedOutForVrapper'" set noerrorbells           " don't beep
+"'GrazaCommentedOutForVrapper'" set noeb vb t_vb=          " disable audio and visual bells
+"'GrazaCommentedOutForVrapper'" au GUIEnter * set vb t_vb=
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " do not create swap files!
+"'GrazaCommentedOutForVrapper'" set nobackup
+"'GrazaCommentedOutForVrapper'" set nowritebackup
+"'GrazaCommentedOutForVrapper'" set noswapfile
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" set pastetoggle=<F7>
+"'GrazaCommentedOutForVrapper'" set listchars=tab:‣\ ,trail:-,extends:#,nbsp:%,eol:¬
+"'GrazaCommentedOutForVrapper'" set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " vim 7.3 features
+"'GrazaCommentedOutForVrapper'" if v:version >= 703
+"'GrazaCommentedOutForVrapper'"     set undofile
+"'GrazaCommentedOutForVrapper'"     set undodir=$HOME/.vim/.undo
+"'GrazaCommentedOutForVrapper'"     set undolevels=1000
+"'GrazaCommentedOutForVrapper'"     set undoreload=10000
+"'GrazaCommentedOutForVrapper'"     set colorcolumn=80    " show a right margin column
+"'GrazaCommentedOutForVrapper'" endif
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" set history=100 " create a larger history
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " hide files matching the pattern:
+"'GrazaCommentedOutForVrapper'" let g:explHideFiles='^\.,.*\.pyc$'
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " show editing mode
+"'GrazaCommentedOutForVrapper'" set showmode
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " set the title within xterm as well
+"'GrazaCommentedOutForVrapper'" set title
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " set status line
+"'GrazaCommentedOutForVrapper'" set laststatus=2
+"'GrazaCommentedOutForVrapper'" set statusline=%<%f\%h%m%r%=%-20.(line=%l\ \ col=%c%V\ \ totlin=%L%)\ \%P\ %{fugitive#statusline()}
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" "display a warning if fileformat isnt unix
+"'GrazaCommentedOutForVrapper'" set statusline+=%#warningmsg#
+"'GrazaCommentedOutForVrapper'" set statusline+=%{&ff!='unix'?'['.&ff.']':''}
+"'GrazaCommentedOutForVrapper'" set statusline+=%*
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" "display a warning if file encoding isnt utf-8
+"'GrazaCommentedOutForVrapper'" set statusline+=%#warningmsg#
+"'GrazaCommentedOutForVrapper'" set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}
+"'GrazaCommentedOutForVrapper'" set statusline+=%*
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " gvim don't display the menu or toolbar
+"'GrazaCommentedOutForVrapper'" set guioptions-=m
+"'GrazaCommentedOutForVrapper'" set guioptions-=T
+"'GrazaCommentedOutForVrapper'" " gvim don't show scrollbars
+"'GrazaCommentedOutForVrapper'" set guioptions-=r
+"'GrazaCommentedOutForVrapper'" set guioptions-=L
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" """""" colour scheme
+"'GrazaCommentedOutForVrapper'" " set t_Co=256
+"'GrazaCommentedOutForVrapper'" set background=dark
+"'GrazaCommentedOutForVrapper'" colorscheme solarized
+"'GrazaCommentedOutForVrapper'" if has('gui_running')
+"'GrazaCommentedOutForVrapper'"   set guifont=Meslo\ LG\ S\ DZ:h14
+"'GrazaCommentedOutForVrapper'" endif
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " folding
+"'GrazaCommentedOutForVrapper'" set foldenable                   " enable folding
+"'GrazaCommentedOutForVrapper'" set foldmethod=manual            " detect triple-{ style fold markers
+"'GrazaCommentedOutForVrapper'" set foldlevel=99
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" """""""""""""""""
+"'GrazaCommentedOutForVrapper'" " added filetypes
+"'GrazaCommentedOutForVrapper'" au BufNewFile,BufRead *.jqt set filetype=html
+"'GrazaCommentedOutForVrapper'" au BufNewFile,BufRead *.scss set filetype=css
+"'GrazaCommentedOutForVrapper'" au BufNewFile,BufRead *.liquid set filetype=html
+"'GrazaCommentedOutForVrapper'" au BufNewFile,BufRead *.json set filetype=json
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " settings for folding comments
+"'GrazaCommentedOutForVrapper'" au BufNewFile,BufRead *.cpp,*.c,*.h,*.java,*.js syn region myCComment start="/\*\*" end="\*/" fold keepend transparent
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" """"""""""""""""""""
+"'GrazaCommentedOutForVrapper'" " keyboard shortcuts
+"'GrazaCommentedOutForVrapper'" " edit and save .vimrc quickly
+"'GrazaCommentedOutForVrapper'" nmap <silent> <leader>ev :e $MYVIMRC<cr>
+"'GrazaCommentedOutForVrapper'" nmap <silent> <leader>sv :so $MYVIMRC<cr>
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " map Y to match C and D behavior
+"'GrazaCommentedOutForVrapper'" nnoremap Y y$
+"'GrazaCommentedOutForVrapper'" " yank entire file (global yank)
+"'GrazaCommentedOutForVrapper'" nmap gy ggVGy
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " fast window switching
+"'GrazaCommentedOutForVrapper'" map <leader>w <C-W>w
+"'GrazaCommentedOutForVrapper'" " cycle between buffers
+"'GrazaCommentedOutForVrapper'" map <leader>. :b#<cr>
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " pull word under cursor into lhs of a substitute (for quick search and replace)
+"'GrazaCommentedOutForVrapper'" nmap <leader>r :%s#\<<C-r>=expand("<cword>")<CR>\>#
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " format json
+"'GrazaCommentedOutForVrapper'" autocmd FileType json nmap <leader>f :%!python -m json.tool<cr>
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " strip all trailing whitespace 
+"'GrazaCommentedOutForVrapper'" fun! <SID>StripTrailingWhitespaces()
+"'GrazaCommentedOutForVrapper'"   let l = line(".")
+"'GrazaCommentedOutForVrapper'"   let c = col(".")
+"'GrazaCommentedOutForVrapper'"   %s/\s\+$//e
+"'GrazaCommentedOutForVrapper'"   call cursor(l, c)
+"'GrazaCommentedOutForVrapper'" endfun
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" autocmd FileType c,cpp,python,ruby,java,html,css,json,javascript autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " insert path of current file into a command
+"'GrazaCommentedOutForVrapper'" cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
+
+" save with ,,
+"GRAZAChangedToBelow inoremap <leader>, <esc>:w<cr>
+inoremap ,, <esc>:w<cr>
+"GRAZAChangedToBelow nnoremap <leader>, :w<cr>
+nnoremap ,, :w<cr>
+
+"'GrazaCommentedOutForVrapper'" " save readonly files with w!!
+"'GrazaCommentedOutForVrapper'" cmap w!! w !sudo tee % >/dev/null
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " save & restore sessions
+"'GrazaCommentedOutForVrapper'" map <c-s> :mksession! <cr>
+"'GrazaCommentedOutForVrapper'" map <c-o> :source Session.vim <cr>
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " switch search highighting off temporaril
+"'GrazaCommentedOutForVrapper'" nmap <silent> <leader>/ :nohlsearch<CR>
+
+" escape out of insert mode with jk
+inoremap jk <Esc>
+
+"'GrazaCommentedOutForVrapper'" " autocomplete shortcut to ctrol-space
+"'GrazaCommentedOutForVrapper'" imap <c-space> <c-x><c-o>
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " swaps ' ` for easier bookmark return
+"'GrazaCommentedOutForVrapper'" nnoremap ' `
+"'GrazaCommentedOutForVrapper'" nnoremap ` '
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " swap ; : for easier commands
+"'GrazaCommentedOutForVrapper'" nnoremap ; :
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " Vertical split then hop to new buffer
+"'GrazaCommentedOutForVrapper'" :noremap <leader>v :vsp<CR>
+"'GrazaCommentedOutForVrapper'" :noremap <leader>h :split<CR>
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " Make current window the only one
+"'GrazaCommentedOutForVrapper'" :noremap <leader>O :only :tabo<CR>
+"'GrazaCommentedOutForVrapper'" :noremap <leader>o :only<CR>
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " move cursor to next row rather than line. Good when wrapping is on
+"'GrazaCommentedOutForVrapper'" nnoremap j gj
+"'GrazaCommentedOutForVrapper'" nnoremap k gk
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " folds
+"'GrazaCommentedOutForVrapper'" :noremap <leader>zz zf%
+"'GrazaCommentedOutForVrapper'" :noremap <leader>zf f{zf%
+"'GrazaCommentedOutForVrapper'" :noremap zx za
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " error next,previous (ctrl-{n,p})
+"'GrazaCommentedOutForVrapper'" :noremap <c-n> :cn<cr>
+"'GrazaCommentedOutForVrapper'" :noremap <c-p> :cp<cr>
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " Buffer delete (ctrl-c)
+"'GrazaCommentedOutForVrapper'" :noremap <c-q> :bd<CR>
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " remap going through windows
+"'GrazaCommentedOutForVrapper'" map <c-j> <c-w>j
+"'GrazaCommentedOutForVrapper'" map <c-k> <c-w>k
+"'GrazaCommentedOutForVrapper'" map <c-l> <c-w>l
+"'GrazaCommentedOutForVrapper'" map <c-h> <c-w>h
+"'GrazaCommentedOutForVrapper'" map <c-c>j <c-w>j<c-w>c<c-w>k
+"'GrazaCommentedOutForVrapper'" map <c-c>k <c-w>k<c-w>c<c-w>j
+"'GrazaCommentedOutForVrapper'" map <c-c>l <c-w>l<c-w>c<c-w>h
+"'GrazaCommentedOutForVrapper'" map <c-c>h <c-w>h<c-w>c<c-w>l
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " show invisible chars
+"'GrazaCommentedOutForVrapper'" nmap <silent> <leader>i :set nolist!<CR>
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " taglist
+"'GrazaCommentedOutForVrapper'" nmap <F8> :TagbarToggle<CR>
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " Task
+"'GrazaCommentedOutForVrapper'" inoremap <silent> <buffer> <c-d-cr> <esc>:call Toggle_task_status()<cr>i
+"'GrazaCommentedOutForVrapper'" noremap <silent> <buffer> <c-d-cr> :call Toggle_task_status()<cr>
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" """"""""""""""""
+"'GrazaCommentedOutForVrapper'" " Plugin settings
+"'GrazaCommentedOutForVrapper'" " nerd tree
+"'GrazaCommentedOutForVrapper'" map <leader>d :NERDTreeToggle<CR>
+"'GrazaCommentedOutForVrapper'" map <leader>nf :NERDTreeFind<CR>
+"'GrazaCommentedOutForVrapper'" map <leader>nm :NERDTreeMirror<CR>
+"'GrazaCommentedOutForVrapper'" let g:NERDChristmasTree=1
+"'GrazaCommentedOutForVrapper'" "let g:NERDTreeShowHidden=1
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " Gundo plugin
+"'GrazaCommentedOutForVrapper'" map <F6> :GundoToggle<cr>
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " fugitive
+"'GrazaCommentedOutForVrapper'" map <leader>gs :Gstatus<cr>
+"'GrazaCommentedOutForVrapper'" map <leader>gl :Glog<cr>
+"'GrazaCommentedOutForVrapper'" map <leader>gd :Gdiff<cr>
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " Ack
+"'GrazaCommentedOutForVrapper'" " set grepprg=ack\ -ai " set ack as the grep programme
+"'GrazaCommentedOutForVrapper'" "let g:ackprg="ack -H --type-set jade=.jade --type-set stylus=.styl --type-set coffee=.coffee --type-set html=.jqt --nocolor --nogroup --column --ignore-dir=node_modules -G '^((?!min\.).)*$'"
+"'GrazaCommentedOutForVrapper'" let g:ackprg="ack -H --type-set jade=.jade --type-set stylus=.styl --type-set coffee=.coffee --type-set html=.jqt --nocolor --nogroup --column --ignore-dir=node_modules -G '^((?!build\.).)*'"
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" nnoremap <leader>a :Ack<space>
+"'GrazaCommentedOutForVrapper'" map <leader>c :Ack <c-R>"<space><cr>
+"'GrazaCommentedOutForVrapper'" let g:ackhighlight=1
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " Easy Grep options
+"'GrazaCommentedOutForVrapper'" let g:EasyGrepInvertWholeWord=1 " ,vv searches for whole word
+"'GrazaCommentedOutForVrapper'" "let g:EasyGrepMode = 2
+"'GrazaCommentedOutForVrapper'" "let g:EasyGrepRecursive = 1
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " Change which file opens after executing :Rails command
+"'GrazaCommentedOutForVrapper'" let g:rails_default_file='config/database.yml'
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " taglist
+"'GrazaCommentedOutForVrapper'" let Tlist_Ctags_Cmd = '~/.vim/utils/ctags' " set path to ctags utility
+"'GrazaCommentedOutForVrapper'" let Tlist_WinWidth = 50
+"'GrazaCommentedOutForVrapper'" let g:tlist_javascript_settings = 'javascript;s:string;a:array;o:object;f:function'
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " Markdown
+"'GrazaCommentedOutForVrapper'" augroup md " add markdown syntax
+"'GrazaCommentedOutForVrapper'" 	autocmd BufRead *.md  set ai formatoptions=tcroqn2 comments=n:> ft=markdown
+"'GrazaCommentedOutForVrapper'" augroup END
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" augroup mkd " add markdown syntax
+"'GrazaCommentedOutForVrapper'" 	autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
+"'GrazaCommentedOutForVrapper'" augroup END
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " mustache
+"'GrazaCommentedOutForVrapper'" autocmd VimEnter,BufNewFile,BufRead *.mustache set nofoldenable
+"'GrazaCommentedOutForVrapper'" "autocmd VimEnter,BufNewFile,BufRead *.js set foldmethod=manual
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " gundo
+"'GrazaCommentedOutForVrapper'" if !has("python")
+"'GrazaCommentedOutForVrapper'"  let g:gundo_disable = 1
+"'GrazaCommentedOutForVrapper'" endif
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" "JavaScript Syntax
+"'GrazaCommentedOutForVrapper'" let g:javascript_ignore_javaScriptdoc = 1
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" let g:ctrlp_custom_ignore = {
+"'GrazaCommentedOutForVrapper'"   \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+"'GrazaCommentedOutForVrapper'"   \ 'file': '\.exe$\|\.so$\|\.dll$',
+"'GrazaCommentedOutForVrapper'"   \ 'link': '',
+"'GrazaCommentedOutForVrapper'"   \ }
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" "Syntastic settings
+"'GrazaCommentedOutForVrapper'" let g:syntastic_javascript_checker="jshint"
+"'GrazaCommentedOutForVrapper'" let g:syntastic_auto_loc_list=2 " close location list automatically
+"'GrazaCommentedOutForVrapper'" "let g:syntastic_mode_map = { 'mode': 'active',
+"'GrazaCommentedOutForVrapper'"                            "\ 'active_filetypes': ['ruby', 'php'],
+"'GrazaCommentedOutForVrapper'"                            "\ 'passive_filetypes': ['html', 'jqt'] }
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " call the jshint config loader script for syntastic
+"'GrazaCommentedOutForVrapper'" :autocmd FileType javascript source $HOME/.vim/jshint-config-loader.vim
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " surround plugin
+"'GrazaCommentedOutForVrapper'" autocmd FileType php let b:surround_45 = "<?php \r ?>"
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " Python settings
+"'GrazaCommentedOutForVrapper'" :autocmd FileType python set expandtab
+"'GrazaCommentedOutForVrapper'" :autocmd FileType python set shiftwidth=4
+"'GrazaCommentedOutForVrapper'" :autocmd FileType python set tabstop=4
+"'GrazaCommentedOutForVrapper'" :autocmd FileType python set softtabstop=4
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" """""""""""
+"'GrazaCommentedOutForVrapper'" " vim tools
+"'GrazaCommentedOutForVrapper'" " create a uuid
+"'GrazaCommentedOutForVrapper'" imap <c-j>d <c-r>=system('$HOME/.vim/utils/uuid.sh')<cr>
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" "refresh browser"
+"'GrazaCommentedOutForVrapper'" nnoremap <F5> :silent execute "!python $HOME/.vim/utils/browserrefresh.py &"<cr>
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " run npm tests
+"'GrazaCommentedOutForVrapper'" nnoremap <leader>t :!npm test<cr>
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " insert the current working directory
+"'GrazaCommentedOutForVrapper'" iabbrev <silent> CWD <c-r>=getcwd()
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" "save on focus lost
+"'GrazaCommentedOutForVrapper'" :au FocusLost * :wa
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" "pretty xml
+"'GrazaCommentedOutForVrapper'" function! DoPrettyXML()
+"'GrazaCommentedOutForVrapper'"   " save the filetype so we can restore it later
+"'GrazaCommentedOutForVrapper'"   let l:origft = &ft
+"'GrazaCommentedOutForVrapper'"   set ft=
+"'GrazaCommentedOutForVrapper'"   " delete the xml header if it exists. This will
+"'GrazaCommentedOutForVrapper'"   " permit us to surround the document with fake tags
+"'GrazaCommentedOutForVrapper'"   " without creating invalid xml.
+"'GrazaCommentedOutForVrapper'"   1s/<?xml .*?>//e
+"'GrazaCommentedOutForVrapper'"   " insert fake tags around the entire document.
+"'GrazaCommentedOutForVrapper'"   " This will permit us to pretty-format excerpts of
+"'GrazaCommentedOutForVrapper'"   " XML that may contain multiple top-level elements.
+"'GrazaCommentedOutForVrapper'"   0put ='<PrettyXML>'
+"'GrazaCommentedOutForVrapper'"   $put ='</PrettyXML>'
+"'GrazaCommentedOutForVrapper'"   silent %!xmllint --format -
+"'GrazaCommentedOutForVrapper'"   " xmllint will insert an <?xml?> header. it's
+"'GrazaCommentedOutForVrapper'"   easy enough to delete
+"'GrazaCommentedOutForVrapper'"   " if you don't want it.
+"'GrazaCommentedOutForVrapper'"   " delete the fake tags
+"'GrazaCommentedOutForVrapper'"   2d
+"'GrazaCommentedOutForVrapper'"   $d
+"'GrazaCommentedOutForVrapper'"   " restore the 'normal' indentation,
+"'GrazaCommentedOutForVrapper'"   which is one extra level
+"'GrazaCommentedOutForVrapper'"   " too deep due to the extra tags we
+"'GrazaCommentedOutForVrapper'"   wrapped around the document.
+"'GrazaCommentedOutForVrapper'"   silent %<
+"'GrazaCommentedOutForVrapper'"   " back to home
+"'GrazaCommentedOutForVrapper'"   1
+"'GrazaCommentedOutForVrapper'"   " restore the filetype
+"'GrazaCommentedOutForVrapper'"   exe "set ft=" . l:origft
+"'GrazaCommentedOutForVrapper'" endfunction
+"'GrazaCommentedOutForVrapper'" command! PrettyXML call DoPrettyXML()
+"'GrazaCommentedOutForVrapper'" " full vim
+"'GrazaCommentedOutForVrapper'" set nocompatible " must be the first line
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " pathogen
+"'GrazaCommentedOutForVrapper'" filetype off
+"'GrazaCommentedOutForVrapper'" silent! call pathogen#runtime_append_all_bundles()
+"'GrazaCommentedOutForVrapper'" silent! call pathogen#helptags()
+"'GrazaCommentedOutForVrapper'" filetype plugin indent on
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" """""""""""""""""
+"'GrazaCommentedOutForVrapper'" "general settings
+"'GrazaCommentedOutForVrapper'" syntax on
+"'GrazaCommentedOutForVrapper'" let mapleader = ","
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" set scrolloff=3            " scroll 3 lines before bottom/top
+"'GrazaCommentedOutForVrapper'" set autoread               " set to auto read when a file is changed from the outside
+"'GrazaCommentedOutForVrapper'" "set mouse=a                " allow for full mouse support
+"'GrazaCommentedOutForVrapper'" set autowrite
+"'GrazaCommentedOutForVrapper'" set showcmd                " display incomplete commands
+"'GrazaCommentedOutForVrapper'" set hidden                 " allow buffer to be put in the background without saving
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" set spelllang=en,es                 " set spell check language
+"'GrazaCommentedOutForVrapper'" set wildmenu               " show autocomplete menus
+"'GrazaCommentedOutForVrapper'" set wildmode=list:longest,list:full " completion menu behaves more like cli
+"'GrazaCommentedOutForVrapper'" set wildignore+=*.o,tags,Session.vim
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" set iskeyword+=$,_         " added word chars
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " paul added
+"'GrazaCommentedOutForVrapper'" set list " show whitespace chars
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " show line number, cursor position
+"'GrazaCommentedOutForVrapper'" set number
+"'GrazaCommentedOutForVrapper'" set ruler
+"'GrazaCommentedOutForVrapper'" set cursorline             " highlights the cursor line
+"'GrazaCommentedOutForVrapper'" set nowrap
+"'GrazaCommentedOutForVrapper'" set linebreak              " this will not break whole words while wrap is enabled
+"'GrazaCommentedOutForVrapper'" set showbreak=…
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " search settings
+"'GrazaCommentedOutForVrapper'" set hlsearch               " highlight search things
+"'GrazaCommentedOutForVrapper'" set incsearch              " go to search results as typing
+"'GrazaCommentedOutForVrapper'" set smartcase              " but case-sensitive if expression contains a capital letter.
+"'GrazaCommentedOutForVrapper'" set ignorecase             " ignore case when searching
+"'GrazaCommentedOutForVrapper'" set gdefault               " assume global when searching or substituting
+"'GrazaCommentedOutForVrapper'" set magic                  " set magic on, for regular expressions
+"'GrazaCommentedOutForVrapper'" set showmatch              " show matching brackets when text indicator is over them
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" set lazyredraw             " don't redraw screen during macros
+"'GrazaCommentedOutForVrapper'" set ttyfast                " improves redrawing for newer computers
+"'GrazaCommentedOutForVrapper'" set fileformats=unix,mac,dos
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " indent settings
+"'GrazaCommentedOutForVrapper'" set autoindent
+"'GrazaCommentedOutForVrapper'" set smartindent
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " tab settings
+"'GrazaCommentedOutForVrapper'" set shiftwidth=2
+"'GrazaCommentedOutForVrapper'" set tabstop=2
+"'GrazaCommentedOutForVrapper'" set softtabstop=2
+"'GrazaCommentedOutForVrapper'" set expandtab
+"'GrazaCommentedOutForVrapper'" set smarttab
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " show line number, cursor position
+"'GrazaCommentedOutForVrapper'" set number
+"'GrazaCommentedOutForVrapper'" set ruler
+"'GrazaCommentedOutForVrapper'" set cul                    " highlights the cursor line
+"'GrazaCommentedOutForVrapper'" set backspace=start,indent,eol " set backspace to act like normal
+"'GrazaCommentedOutForVrapper'" set nowrap
+"'GrazaCommentedOutForVrapper'" set encoding=utf-8
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" set visualbell             " don't beep
+"'GrazaCommentedOutForVrapper'" set noerrorbells           " don't beep
+"'GrazaCommentedOutForVrapper'" set noeb vb t_vb=          " disable audio and visual bells
+"'GrazaCommentedOutForVrapper'" au GUIEnter * set vb t_vb=
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " do not create swap files!
+"'GrazaCommentedOutForVrapper'" set nobackup
+"'GrazaCommentedOutForVrapper'" set nowritebackup
+"'GrazaCommentedOutForVrapper'" set noswapfile
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" set pastetoggle=<F7>
+"'GrazaCommentedOutForVrapper'" set listchars=tab:‣\ ,trail:-,extends:#,nbsp:%,eol:¬
+"'GrazaCommentedOutForVrapper'" set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " vim 7.3 features
+"'GrazaCommentedOutForVrapper'" if v:version >= 703
+"'GrazaCommentedOutForVrapper'"     set undofile
+"'GrazaCommentedOutForVrapper'"     set undodir=$HOME/.vim/.undo
+"'GrazaCommentedOutForVrapper'"     set undolevels=1000
+"'GrazaCommentedOutForVrapper'"     set undoreload=10000
+"'GrazaCommentedOutForVrapper'"     set colorcolumn=80    " show a right margin column
+"'GrazaCommentedOutForVrapper'" endif
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" set history=100 " create a larger history
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " hide files matching the pattern:
+"'GrazaCommentedOutForVrapper'" let g:explHideFiles='^\.,.*\.pyc$'
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " show editing mode
+"'GrazaCommentedOutForVrapper'" set showmode
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " set the title within xterm as well
+"'GrazaCommentedOutForVrapper'" set title
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " set status line
+"'GrazaCommentedOutForVrapper'" set laststatus=2
+"'GrazaCommentedOutForVrapper'" set statusline=%<%f\%h%m%r%=%-20.(line=%l\ \ col=%c%V\ \ totlin=%L%)\ \%P\ %{fugitive#statusline()}
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" "display a warning if fileformat isnt unix
+"'GrazaCommentedOutForVrapper'" set statusline+=%#warningmsg#
+"'GrazaCommentedOutForVrapper'" set statusline+=%{&ff!='unix'?'['.&ff.']':''}
+"'GrazaCommentedOutForVrapper'" set statusline+=%*
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" "display a warning if file encoding isnt utf-8
+"'GrazaCommentedOutForVrapper'" set statusline+=%#warningmsg#
+"'GrazaCommentedOutForVrapper'" set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}
+"'GrazaCommentedOutForVrapper'" set statusline+=%*
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " gvim don't display the menu or toolbar
+"'GrazaCommentedOutForVrapper'" set guioptions-=m
+"'GrazaCommentedOutForVrapper'" set guioptions-=T
+"'GrazaCommentedOutForVrapper'" " gvim don't show scrollbars
+"'GrazaCommentedOutForVrapper'" set guioptions-=r
+"'GrazaCommentedOutForVrapper'" set guioptions-=L
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" """""" colour scheme
+"'GrazaCommentedOutForVrapper'" " set t_Co=256
+"'GrazaCommentedOutForVrapper'" set background=dark
+"'GrazaCommentedOutForVrapper'" colorscheme solarized
+"'GrazaCommentedOutForVrapper'" if has('gui_running')
+"'GrazaCommentedOutForVrapper'"   set guifont=Meslo\ LG\ S\ DZ:h14
+"'GrazaCommentedOutForVrapper'" endif
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " folding
+"'GrazaCommentedOutForVrapper'" set foldenable                   " enable folding
+"'GrazaCommentedOutForVrapper'" set foldmethod=manual            " detect triple-{ style fold markers
+"'GrazaCommentedOutForVrapper'" set foldlevel=99
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" """""""""""""""""
+"'GrazaCommentedOutForVrapper'" " added filetypes
+"'GrazaCommentedOutForVrapper'" au BufNewFile,BufRead *.jqt set filetype=html
+"'GrazaCommentedOutForVrapper'" au BufNewFile,BufRead *.scss set filetype=css
+"'GrazaCommentedOutForVrapper'" au BufNewFile,BufRead *.liquid set filetype=html
+"'GrazaCommentedOutForVrapper'" au BufNewFile,BufRead *.json set filetype=json
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " settings for folding comments
+"'GrazaCommentedOutForVrapper'" au BufNewFile,BufRead *.cpp,*.c,*.h,*.java,*.js syn region myCComment start="/\*\*" end="\*/" fold keepend transparent
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" """"""""""""""""""""
+"'GrazaCommentedOutForVrapper'" " keyboard shortcuts
+"'GrazaCommentedOutForVrapper'" " edit and save .vimrc quickly
+"'GrazaCommentedOutForVrapper'" nmap <silent> <leader>ev :e $MYVIMRC<cr>
+"'GrazaCommentedOutForVrapper'" nmap <silent> <leader>sv :so $MYVIMRC<cr>
+
+
+" map Y to match C and D behavior
+nnoremap Y y$
+" yank entire file (global yank)
+nmap gy ggVGy
+
+"'GrazaCommentedOutForVrapper'" " fast window switching
+"'GrazaCommentedOutForVrapper'" map <leader>w <C-W>w
+"'GrazaCommentedOutForVrapper'" " cycle between buffers
+"'GrazaCommentedOutForVrapper'" map <leader>. :b#<cr>
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " pull word under cursor into lhs of a substitute (for quick search and replace)
+"'GrazaCommentedOutForVrapper'" nmap <leader>r :%s#\<<C-r>=expand("<cword>")<CR>\>#
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " format json
+"'GrazaCommentedOutForVrapper'" autocmd FileType json nmap <leader>f :%!python -m json.tool<cr>
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " strip all trailing whitespace 
+"'GrazaCommentedOutForVrapper'" fun! <SID>StripTrailingWhitespaces()
+"'GrazaCommentedOutForVrapper'"   let l = line(".")
+"'GrazaCommentedOutForVrapper'"   let c = col(".")
+"'GrazaCommentedOutForVrapper'"   %s/\s\+$//e
+"'GrazaCommentedOutForVrapper'"   call cursor(l, c)
+"'GrazaCommentedOutForVrapper'" endfun
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" autocmd FileType c,cpp,python,ruby,java,html,css,json,javascript autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " insert path of current file into a command
+"'GrazaCommentedOutForVrapper'" cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " save with ,,
+"'GrazaCommentedOutForVrapper'" inoremap <leader>, <esc>:w<cr>
+"'GrazaCommentedOutForVrapper'" nnoremap <leader>, :w<cr>
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " save readonly files with w!!
+"'GrazaCommentedOutForVrapper'" cmap w!! w !sudo tee % >/dev/null
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " save & restore sessions
+"'GrazaCommentedOutForVrapper'" map <c-s> :mksession! <cr>
+"'GrazaCommentedOutForVrapper'" map <c-o> :source Session.vim <cr>
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " switch search highighting off temporaril
+"'GrazaCommentedOutForVrapper'" nmap <silent> <leader>/ :nohlsearch<CR>
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " escape out of insert mode with jk
+"'GrazaCommentedOutForVrapper'" inoremap jk <Esc>
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " autocomplete shortcut to ctrol-space
+"'GrazaCommentedOutForVrapper'" imap <c-space> <c-x><c-o>
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " swaps ' ` for easier bookmark return
+"'GrazaCommentedOutForVrapper'" nnoremap ' `
+"'GrazaCommentedOutForVrapper'" nnoremap ` '
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " swap ; : for easier commands
+"'GrazaCommentedOutForVrapper'" nnoremap ; :
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " Vertical split then hop to new buffer
+"'GrazaCommentedOutForVrapper'" :noremap <leader>v :vsp<CR>
+"'GrazaCommentedOutForVrapper'" :noremap <leader>h :split<CR>
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " Make current window the only one
+"'GrazaCommentedOutForVrapper'" :noremap <leader>O :only :tabo<CR>
+"'GrazaCommentedOutForVrapper'" :noremap <leader>o :only<CR>
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " move cursor to next row rather than line. Good when wrapping is on
+"'GrazaCommentedOutForVrapper'" nnoremap j gj
+"'GrazaCommentedOutForVrapper'" nnoremap k gk
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " folds
+"'GrazaCommentedOutForVrapper'" :noremap <leader>zz zf%
+"'GrazaCommentedOutForVrapper'" :noremap <leader>zf f{zf%
+"'GrazaCommentedOutForVrapper'" :noremap zx za
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " error next,previous (ctrl-{n,p})
+"'GrazaCommentedOutForVrapper'" :noremap <c-n> :cn<cr>
+"'GrazaCommentedOutForVrapper'" :noremap <c-p> :cp<cr>
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " Buffer delete (ctrl-c)
+"'GrazaCommentedOutForVrapper'" :noremap <c-q> :bd<CR>
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " remap going through windows
+"'GrazaCommentedOutForVrapper'" map <c-j> <c-w>j
+"'GrazaCommentedOutForVrapper'" map <c-k> <c-w>k
+"'GrazaCommentedOutForVrapper'" map <c-l> <c-w>l
+"'GrazaCommentedOutForVrapper'" map <c-h> <c-w>h
+"'GrazaCommentedOutForVrapper'" map <c-c>j <c-w>j<c-w>c<c-w>k
+"'GrazaCommentedOutForVrapper'" map <c-c>k <c-w>k<c-w>c<c-w>j
+"'GrazaCommentedOutForVrapper'" map <c-c>l <c-w>l<c-w>c<c-w>h
+"'GrazaCommentedOutForVrapper'" map <c-c>h <c-w>h<c-w>c<c-w>l
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " show invisible chars
+"'GrazaCommentedOutForVrapper'" nmap <silent> <leader>i :set nolist!<CR>
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " taglist
+"'GrazaCommentedOutForVrapper'" nmap <F8> :TagbarToggle<CR>
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " Task
+"'GrazaCommentedOutForVrapper'" inoremap <silent> <buffer> <c-d-cr> <esc>:call Toggle_task_status()<cr>i
+"'GrazaCommentedOutForVrapper'" noremap <silent> <buffer> <c-d-cr> :call Toggle_task_status()<cr>
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" """"""""""""""""
+"'GrazaCommentedOutForVrapper'" " Plugin settings
+"'GrazaCommentedOutForVrapper'" " nerd tree
+"'GrazaCommentedOutForVrapper'" map <leader>d :NERDTreeToggle<CR>
+"'GrazaCommentedOutForVrapper'" map <leader>nf :NERDTreeFind<CR>
+"'GrazaCommentedOutForVrapper'" map <leader>nm :NERDTreeMirror<CR>
+"'GrazaCommentedOutForVrapper'" let g:NERDChristmasTree=1
+"'GrazaCommentedOutForVrapper'" "let g:NERDTreeShowHidden=1
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " Gundo plugin
+"'GrazaCommentedOutForVrapper'" map <F6> :GundoToggle<cr>
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " fugitive
+"'GrazaCommentedOutForVrapper'" map <leader>gs :Gstatus<cr>
+"'GrazaCommentedOutForVrapper'" map <leader>gl :Glog<cr>
+"'GrazaCommentedOutForVrapper'" map <leader>gd :Gdiff<cr>
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " Ack
+"'GrazaCommentedOutForVrapper'" " set grepprg=ack\ -ai " set ack as the grep programme
+"'GrazaCommentedOutForVrapper'" "let g:ackprg="ack -H --type-set jade=.jade --type-set stylus=.styl --type-set coffee=.coffee --type-set html=.jqt --nocolor --nogroup --column --ignore-dir=node_modules -G '^((?!min\.).)*$'"
+"'GrazaCommentedOutForVrapper'" let g:ackprg="ack -H --type-set jade=.jade --type-set stylus=.styl --type-set coffee=.coffee --type-set html=.jqt --nocolor --nogroup --column --ignore-dir=node_modules -G '^((?!build\.).)*'"
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" nnoremap <leader>a :Ack<space>
+"'GrazaCommentedOutForVrapper'" map <leader>c :Ack <c-R>"<space><cr>
+"'GrazaCommentedOutForVrapper'" let g:ackhighlight=1
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " Easy Grep options
+"'GrazaCommentedOutForVrapper'" let g:EasyGrepInvertWholeWord=1 " ,vv searches for whole word
+"'GrazaCommentedOutForVrapper'" "let g:EasyGrepMode = 2
+"'GrazaCommentedOutForVrapper'" "let g:EasyGrepRecursive = 1
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " Change which file opens after executing :Rails command
+"'GrazaCommentedOutForVrapper'" let g:rails_default_file='config/database.yml'
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " taglist
+"'GrazaCommentedOutForVrapper'" let Tlist_Ctags_Cmd = '~/.vim/utils/ctags' " set path to ctags utility
+"'GrazaCommentedOutForVrapper'" let Tlist_WinWidth = 50
+"'GrazaCommentedOutForVrapper'" let g:tlist_javascript_settings = 'javascript;s:string;a:array;o:object;f:function'
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " Markdown
+"'GrazaCommentedOutForVrapper'" augroup md " add markdown syntax
+"'GrazaCommentedOutForVrapper'" 	autocmd BufRead *.md  set ai formatoptions=tcroqn2 comments=n:> ft=markdown
+"'GrazaCommentedOutForVrapper'" augroup END
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" augroup mkd " add markdown syntax
+"'GrazaCommentedOutForVrapper'" 	autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
+"'GrazaCommentedOutForVrapper'" augroup END
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " mustache
+"'GrazaCommentedOutForVrapper'" autocmd VimEnter,BufNewFile,BufRead *.mustache set nofoldenable
+"'GrazaCommentedOutForVrapper'" "autocmd VimEnter,BufNewFile,BufRead *.js set foldmethod=manual
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " gundo
+"'GrazaCommentedOutForVrapper'" if !has("python")
+"'GrazaCommentedOutForVrapper'"  let g:gundo_disable = 1
+"'GrazaCommentedOutForVrapper'" endif
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" "JavaScript Syntax
+"'GrazaCommentedOutForVrapper'" let g:javascript_ignore_javaScriptdoc = 1
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" let g:ctrlp_custom_ignore = {
+"'GrazaCommentedOutForVrapper'"   \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+"'GrazaCommentedOutForVrapper'"   \ 'file': '\.exe$\|\.so$\|\.dll$',
+"'GrazaCommentedOutForVrapper'"   \ 'link': '',
+"'GrazaCommentedOutForVrapper'"   \ }
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" "Syntastic settings
+"'GrazaCommentedOutForVrapper'" let g:syntastic_javascript_checker="jshint"
+"'GrazaCommentedOutForVrapper'" let g:syntastic_auto_loc_list=2 " close location list automatically
+"'GrazaCommentedOutForVrapper'" "let g:syntastic_mode_map = { 'mode': 'active',
+"'GrazaCommentedOutForVrapper'"                            "\ 'active_filetypes': ['ruby', 'php'],
+"'GrazaCommentedOutForVrapper'"                            "\ 'passive_filetypes': ['html', 'jqt'] }
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " call the jshint config loader script for syntastic
+"'GrazaCommentedOutForVrapper'" :autocmd FileType javascript source $HOME/.vim/jshint-config-loader.vim
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " surround plugin
+"'GrazaCommentedOutForVrapper'" autocmd FileType php let b:surround_45 = "<?php \r ?>"
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " Python settings
+"'GrazaCommentedOutForVrapper'" :autocmd FileType python set expandtab
+"'GrazaCommentedOutForVrapper'" :autocmd FileType python set shiftwidth=4
+"'GrazaCommentedOutForVrapper'" :autocmd FileType python set tabstop=4
+"'GrazaCommentedOutForVrapper'" :autocmd FileType python set softtabstop=4
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" """""""""""
+"'GrazaCommentedOutForVrapper'" " vim tools
+"'GrazaCommentedOutForVrapper'" " create a uuid
+"'GrazaCommentedOutForVrapper'" imap <c-j>d <c-r>=system('$HOME/.vim/utils/uuid.sh')<cr>
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" "refresh browser"
+"'GrazaCommentedOutForVrapper'" nnoremap <F5> :silent execute "!python $HOME/.vim/utils/browserrefresh.py &"<cr>
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " run npm tests
+"'GrazaCommentedOutForVrapper'" nnoremap <leader>t :!npm test<cr>
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" " insert the current working directory
+"'GrazaCommentedOutForVrapper'" iabbrev <silent> CWD <c-r>=getcwd()
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" "save on focus lost
+"'GrazaCommentedOutForVrapper'" :au FocusLost * :wa
+"'GrazaCommentedOutForVrapper'" 
+"'GrazaCommentedOutForVrapper'" "pretty xml
+"'GrazaCommentedOutForVrapper'" function! DoPrettyXML()
+"'GrazaCommentedOutForVrapper'"   " save the filetype so we can restore it later
+"'GrazaCommentedOutForVrapper'"   let l:origft = &ft
+"'GrazaCommentedOutForVrapper'"   set ft=
+"'GrazaCommentedOutForVrapper'"   " delete the xml header if it exists. This will
+"'GrazaCommentedOutForVrapper'"   " permit us to surround the document with fake tags
+"'GrazaCommentedOutForVrapper'"   " without creating invalid xml.
+"'GrazaCommentedOutForVrapper'"   1s/<?xml .*?>//e
+"'GrazaCommentedOutForVrapper'"   " insert fake tags around the entire document.
+"'GrazaCommentedOutForVrapper'"   " This will permit us to pretty-format excerpts of
+"'GrazaCommentedOutForVrapper'"   " XML that may contain multiple top-level elements.
+"'GrazaCommentedOutForVrapper'"   0put ='<PrettyXML>'
+"'GrazaCommentedOutForVrapper'"   $put ='</PrettyXML>'
+"'GrazaCommentedOutForVrapper'"   silent %!xmllint --format -
+"'GrazaCommentedOutForVrapper'"   " xmllint will insert an <?xml?> header. it's
+"'GrazaCommentedOutForVrapper'"   easy enough to delete
+"'GrazaCommentedOutForVrapper'"   " if you don't want it.
+"'GrazaCommentedOutForVrapper'"   " delete the fake tags
+"'GrazaCommentedOutForVrapper'"   2d
+"'GrazaCommentedOutForVrapper'"   $d
+"'GrazaCommentedOutForVrapper'"   " restore the 'normal' indentation,
+"'GrazaCommentedOutForVrapper'"   which is one extra level
+"'GrazaCommentedOutForVrapper'"   " too deep due to the extra tags we
+"'GrazaCommentedOutForVrapper'"   wrapped around the document.
+"'GrazaCommentedOutForVrapper'"   silent %<
+"'GrazaCommentedOutForVrapper'"   " back to home
+"'GrazaCommentedOutForVrapper'"   1
+"'GrazaCommentedOutForVrapper'"   " restore the filetype
+"'GrazaCommentedOutForVrapper'"   exe "set ft=" . l:origft
+"'GrazaCommentedOutForVrapper'" endfunction
+"'GrazaCommentedOutForVrapper'" command! PrettyXML call DoPrettyXML()
+"'GrazaCommentedOutForVrapper'" 
