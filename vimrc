@@ -135,6 +135,11 @@ if has('gui_running')
   set guifont=Meslo\ LG\ S\ DZ:h14
 endif
 
+"""""" GVIMRC (for some reason it doesn't load automagically)
+if has('gui_running')
+  source $HOME/.vim/gvimrc
+endif
+
 " folding
 set foldenable                   " enable folding
 set foldmethod=manual            " detect triple-{ style fold markers
