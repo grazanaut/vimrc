@@ -21,7 +21,7 @@
 	url = https://github.com/sjl/gundo.vim.git
 [submodule "bundle/easygrep"]
 	path = bundle/easygrep
-	url = https://github.com/gaving/vim-easygrep.git
+	url = https://github.com/vim-scripts/EasyGrep.git
 [submodule "bundle/matchit"]
 	path = bundle/matchit
 	url = https://github.com/tsaleh/vim-matchit.git
