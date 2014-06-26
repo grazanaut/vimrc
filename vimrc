@@ -150,6 +150,7 @@ set foldlevel=99
 " added filetypes
 au BufNewFile,BufRead *.jqt set filetype=html
 au BufNewFile,BufRead *.scss set filetype=css
+au BufNewFile,BufRead *.less set filetype=css
 au BufNewFile,BufRead *.liquid set filetype=html
 au BufNewFile,BufRead *.json set filetype=json
 
