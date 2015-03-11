@@ -81,7 +81,8 @@ set nowritebackup
 set noswapfile
 
 set pastetoggle=<F7>
-set listchars=tab:‣\ ,trail:-,extends:#,nbsp:%,eol:¬
+" set listchars=tab:‣\ ,trail:-,extends:#,nbsp:%,eol:¬
+set listchars=tab:→\ ,trail:-,extends:#,nbsp:%,eol:¬
 set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
 
 " vim 7.3 features
