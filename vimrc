@@ -406,3 +406,6 @@ function! DoPrettyXML()
   exe "set ft=" . l:origft
 endfunction
 command! PrettyXML call DoPrettyXML()
+
+" set colour of tabs to something milder than red - do last so it overrides other packages
+highlight SpecialKey guifg=#2a464e ctermfg=2
