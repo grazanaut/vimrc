@@ -149,7 +149,9 @@ set foldlevel=99
 """""""""""""""""
 " added filetypes
 au BufNewFile,BufRead *.jqt set filetype=html
+au BufNewFile,BufRead *.handlebars set filetype=html
 au BufNewFile,BufRead *.scss set filetype=css
+au BufNewFile,BufRead *.less set filetype=css
 au BufNewFile,BufRead *.liquid set filetype=html
 au BufNewFile,BufRead *.json set filetype=json
 
@@ -337,7 +339,7 @@ let g:ctrlp_custom_ignore = {
 
 
 "Syntastic settings
-let g:syntastic_javascript_checker="jshint"
+let g:syntastic_javascript_checkers=['jshint']
 let g:syntastic_auto_loc_list=2 " close location list automatically
 "let g:syntastic_mode_map = { 'mode': 'active',
                            "\ 'active_filetypes': ['ruby', 'php'],

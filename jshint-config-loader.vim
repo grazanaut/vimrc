@@ -25,7 +25,8 @@ endf
 fu! s:findroot(curr, config, depth, type)
   let [depth, notfound] = [a:depth + 1, empty(s:glbpath(a:curr, a:config, 1))]
   if !notfound
-    let g:syntastic_javascript_jshint_conf = a:curr . '/' . a:config
+    let g:syntastic_javascript_jshint_args = '--config ' . a:curr . '/' . a:config
+    "let g:syntastic_javascript_jshint_conf = a:curr . '/' . a:config
   el
     let parent = s:getparent(a:curr)
     if parent != a:curr | cal s:findroot(parent, a:config, depth, a:type) | en
